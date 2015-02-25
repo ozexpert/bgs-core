@@ -3,7 +3,6 @@ package com.red_folder.phonegap.plugin.backgroundservice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.neumob.cordova.networkstats.NetworkStatsService;
 
 public class BootReceiver extends BroadcastReceiver {  
 	
@@ -19,11 +18,11 @@ public class BootReceiver extends BroadcastReceiver {
 		String[] serviceList = PropertyHelper.getBootServices(context);
 		
 		if (serviceList != null) {
-			//for (int i = 0; i < serviceList.length; i++)
-			//{
-				Intent serviceIntent = new Intent(context, NetworkStatsService.class);         
+			for (int i = 0; i < serviceList.length; i++)
+			{
+				Intent serviceIntent = new Intent(serviceList[i]);         
 				context.startService(serviceIntent);
-			//}
+			}
 		}
 	} 
 	

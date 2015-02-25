@@ -17,6 +17,8 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.content.ServiceConnection;
 
+import com.neumob.cordova.networkstats.NetworkStatsService;
+
 public class BackgroundServicePluginLogic {
 
 	/*
@@ -598,7 +600,7 @@ public class BackgroundServicePluginLogic {
 			Log.d(LOCALTAG, "Starting bindToService");
 			
 			try {
-				this.mService = new Intent(this.mServiceName);
+				this.mService = new Intent(this.mContext, NetworkStatsService.class);
 
 				Log.d(LOCALTAG, "Attempting to start service");
 				this.mContext.startService(this.mService);
